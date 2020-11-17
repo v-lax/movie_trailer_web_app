@@ -52,6 +52,7 @@ function displayMovieInfo() {
         console.log(response);
 
         $("#movie-info").empty();
+        $("#movie-poster").empty();
 
         var mainDiv = $("<div>");
         var rating = $("<div>");
