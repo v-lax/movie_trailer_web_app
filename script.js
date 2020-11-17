@@ -8,6 +8,7 @@ $("#search-but").on("click", function (event) {
     movieSearch.push(movSearch);
     localStorage.setItem("movieSearch", JSON.stringify(movieSearch));
     $("#movie-input").val("");
+    displayMovieInfo(movSearch)
     renderButtons();
 });
 
@@ -38,9 +39,8 @@ renderButtons();
 // Movie api
 
 
-function displayMovieInfo() {
+function displayMovieInfo(movie) {
 
-    var movie = $(this).attr("data-movieName");
     console.log(movie);
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
