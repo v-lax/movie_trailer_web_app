@@ -30,3 +30,20 @@ function renderButtons(){
 };
 
 renderButtons();
+
+
+function generatePosterHref(){
+var apiKey = AIzaSyAJ8GS9Q26oP02V831UEDAu8uaXvHsWIes
+
+
+
+
+
+
+
+
+
+
+
+
+}
