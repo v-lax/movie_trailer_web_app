@@ -82,7 +82,10 @@ function displayMovieInfo() {
         movPost.attr("src", response.Poster);
         $("#movie-poster").append(movPost);
 
-
+        //splits the string of actors into and array, then passes that array to displayActors function
+        console.log(response.Actors,"<===")
+        var actorArr = response.Actors.split(", ")
+        displayActors(actorArr)
     });
 
 };
@@ -102,3 +105,23 @@ function getVideo() {
         console.log(response);
         console.log(response.data.items[1].videoId)
       })};
+
+////////////////////////Image of actors API///////////////////////////
+
+function displayActors(actornames){
+    console.log(actornames)
+    for(let i = 0; i < actornames.length; i++){
+        var actorName = actornames[i]
+        console.log(actorName)
+        $.ajax({
+            url : `https://www.googleapis.com/customsearch/v1?key=AIzaSyBMXuLospju_w3vYX_hODdqxcz3u_5x3j8&q=${actorName}&num=3&cx=0998025c5f77bfde1&searchTerm=image&alt=json`,
+            method: "GET"
+        }).then(function(response){
+            var actorImage = $("<img>")
+            actorImage.attr("src", response.items[0].pagemap.imageobject[0].url)
+            $("#actors").append(actorImage)
+        })
+    }
+    
+}
+//AIzaSyBMXuLospju_w3vYX_hODdqxcz3u_5x3j8
