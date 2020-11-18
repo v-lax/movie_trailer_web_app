@@ -8,7 +8,6 @@ $("#search-but").on("click", function (event) {
     movieSearch.push(movSearch);
     localStorage.setItem("movieSearch", JSON.stringify(movieSearch));
     $("#movie-input").val("");
-    displayMovieInfo(movSearch)
     renderButtons();
 });
 
@@ -26,10 +25,9 @@ function renderButtons() {
         a.attr("data-movieName", storedMovies[i]);
         a.text(storedMovies[i]);
         $("#prev-search").append(a);
+
     }
-
     displayMovieInfo();
-
 };
 
 renderButtons();
@@ -41,14 +39,16 @@ renderButtons();
 // Movie api
 
 
-function displayMovieInfo(movie) {
+function displayMovieInfo() {
 
     var movie = $(this).attr("data-movieName");
-    if (movie === undefined){
-        movie = movieSearch[movieSearch.length-1];
+
+    if (movie === undefined) {
+        movie = movieSearch[movieSearch.length - 1];
     }
-  
-  
+
+
+
     console.log(movie);
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
@@ -69,11 +69,12 @@ function displayMovieInfo(movie) {
         var released = $("<div>");
         released.text(response.Released);
         mainDiv.append(released);
+        
         var plot = $("<div>");
         plot.text(response.Plot);
         mainDiv.append(plot);
 
-        
+
         $("#movie-info").append(mainDiv);
 
         var movPost = $("<img>");
@@ -85,8 +86,6 @@ function displayMovieInfo(movie) {
 
 };
 
-//this will make it so that the last item on the list will populate when you refresh the page
-displayMovieInfo();
 
 
 
