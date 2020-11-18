@@ -4,6 +4,7 @@ var movieSearch = [];
 
 $("#search-but").on("click", function (event) {
     event.preventDefault();
+    getVideo();
     var movSearch = $("#movie-input").val().trim();
     movieSearch.push(movSearch);
     localStorage.setItem("movieSearch", JSON.stringify(movieSearch));
@@ -99,4 +100,5 @@ function getVideo() {
         type: 'video',
       }}).then(function (response) {
         console.log(response);
+        console.log(response.data.items[1].videoId)
       })};
