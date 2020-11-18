@@ -46,8 +46,9 @@ function displayMovieInfo() {
 
     if (movie === undefined) {
         movie = movieSearch[movieSearch.length - 1];
+        
     }
-
+   
 
 
     console.log(movie);
@@ -62,21 +63,27 @@ function displayMovieInfo() {
 
         $("#movie-info").empty();
         $("#movie-poster").empty();
+        // $("#movie-info").empty();
 
-        var mainDiv = $("<div>");
-        var rating = $("<div>");
-        rating.text(response.Rated);
-        mainDiv.append(rating);
-        var released = $("<div>");
-        released.text(response.Released);
-        mainDiv.append(released);
+        // var mainDiv = $("<div>");
+        // var rating = $("<li>");
+        // rating.text("Rated: " + response.Rated);
+        $("#movie-rating").text(("Rated: " + response.Rated));
+
         
-        var plot = $("<div>");
-        plot.text(response.Plot);
-        mainDiv.append(plot);
+        // var released = $("<div>");
+        // released.text("Release Date: " + response.Released);
+        // mainDiv.append(released);
+        $("#release-date").text(("Released: " + response.Released));
+        $("#movie-genre").text(("Genre: " + response.Genre));
+        $("#movie-plot").text((response.Plot));
+        
+        // var plot = $("<div>");
+        // plot.text(response.Plot);
+        // mainDiv.append(plot);
 
 
-        $("#movie-info").append(mainDiv);
+        // $("#movie-info").append(mainDiv);
 
         var movPost = $("<img>");
         movPost.attr("src", response.Poster);
