@@ -100,5 +100,11 @@ function getVideo() {
         type: 'video',
       }}).then(function (response) {
         console.log(response);
-        console.log(response.data.items[1].videoId)
+        console.log(response.items[0].id.videoId)
+        var videoId = response.items[0].id.videoId
+        var youtubeBase = "https://www.youtube.com/watch?v="
+        $("#honest-trailer-button").attr("href", youtubeBase + videoId)
+        
       })};
+
+      $('#prev-search').on("click", ".movie", displayMovieInfo);
