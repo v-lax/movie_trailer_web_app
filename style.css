@@ -5,7 +5,8 @@
 }
 
 body {
-    background-color: hsla(162, 83%, 40%, 0.925);
+
+    background-color: rgba(54, 53, 53, 0.753);
     height: 100vh;
   }
 
