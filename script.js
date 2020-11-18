@@ -4,12 +4,13 @@ var movieSearch = [];
 
 $("#search-but").on("click", function (event) {
     event.preventDefault();
-    getVideo();
+    
     var movSearch = $("#movie-input").val().trim();
     movieSearch.push(movSearch);
     localStorage.setItem("movieSearch", JSON.stringify(movieSearch));
     $("#movie-input").val("");
     renderButtons();
+    getVideo(movieSearch)
 });
 
 
@@ -28,7 +29,8 @@ function renderButtons() {
         $("#prev-search").append(a);
 
     }
-    displayMovieInfo();
+    displayMovieInfo(movieSearch[movieSearch.length-1]);
+    getVideo(movieSearch[movieSearch.length-1])
 };
 
 renderButtons();
@@ -40,17 +42,11 @@ renderButtons();
 // Movie api
 
 
-function displayMovieInfo() {
-
-    var movie = $(this).attr("data-movieName");
-
-    if (movie === undefined) {
-        movie = movieSearch[movieSearch.length - 1];
-    }
+function displayMovieInfo(movie) {
+    
 
 
-
-    console.log(movie);
+    
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
 
@@ -58,7 +54,7 @@ function displayMovieInfo() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        
 
         $("#movie-info").empty();
         $("#movie-poster").empty();
@@ -82,29 +78,38 @@ function displayMovieInfo() {
         movPost.attr("src", response.Poster);
         $("#movie-poster").append(movPost);
 
-
+        
     });
 
 };
-function getVideo() {
+function getVideo(movieInput) {
 
-    var movieInput = $("#movie-input").val()
+    
     $.ajax({
       method: 'GET',
       url: 'https://www.googleapis.com/youtube/v3/search',
       data: {
-        key: 'AIzaSyAJ8GS9Q26oP02V831UEDAu8uaXvHsWIes',
+        key: 'AIzaSyCjerp3IakGbMamBLXHAI_lfuATAEnvVI8',
         q: movieInput +' Honest Trailer',
         part: 'snippet',
         maxResults: 1,
         type: 'video',
       }}).then(function (response) {
-        console.log(response);
-        console.log(response.items[0].id.videoId)
-        var videoId = response.items[0].id.videoId
-        var youtubeBase = "https://www.youtube.com/watch?v="
-        $("#honest-trailer-button").attr("href", youtubeBase + videoId)
+        var videoId = response.items[0].id.videoId;
+        var youtubeBase = "https://www.youtube.com/watch?v=";
+        $("#honest-trailer-button").attr("href", youtubeBase + videoId);
         
       })};
 
-      $('#prev-search').on("click", ".movie", displayMovieInfo);
+
+
+      
+
+      $('#prev-search').on("click", ".movie", function(){
+          var prevName = $(this).attr("data-movieName")
+          displayMovieInfo(prevName);
+          getVideo(prevName)
+      })
+
+
+      
