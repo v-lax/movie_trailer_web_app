@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie</title>
+    <title>Honest Trailers</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.2/css/bulma.css" rel="stylesheet"/>
 </head>
 
 <body>
     <section class="hero">
         <div class="hero-body">
             <div class="container is-size-1 has-background-black">
-                <h1 class="has-text-info-light">Movie Information</h1>
+                <h1 class="has-text-info-light has-text-centered">Honest Trailers!</h1>
             </div>
         </div>
     </section>
@@ -24,27 +25,31 @@
                     <div class="field">
                         <div class="control">
                             <input type="text" class="input" id="movie-input" placeholder="Movie Search">
-                            <button class="button is-primary" id="search-but">Search</button>
-                            <p>Search History</p>
+                            <button class="button is-primary mt-3" id="search-but">Search</button>
+                            <p class='mt-3'>Search History</p>
                         </div>
                     </div>
-                    <div id="prev-search"></div>
+                    <div class="mt=2" id="prev-search"></div>
                 </div>
                 <div class="column is-5">
                     <h4 class="title">Movie Information</h1>
-                        <div id="movie-info"></div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa totam rem quo error quod ad ab
-                            neque beatae! Harum enim ab illo vitae exercitationem. Beatae, adipisci. Rerum beatae
-                            nostrum, ducimus sapiente natus et possimus suscipit deleniti minima voluptatibus. Sit
-                            laudantium fugit sunt dolores nisi incidunt explicabo tempore expedita enim quibusdam.</p>
+                        <li>
+                            <ol id="release-date"></ol>
+                            <ol id="movie-rating"></ol>
+                            <ol id="movie-genre"></ol>
+                        </li>
+
+                        <div id="movie-info">
+                            <!--Movie information gets sent here-->
+                        
+                        </div>
                 </div>
                 <div class="column is-5">
-                    <h4 class="title">Movie Preview</h4>
-                    <div id="movie-poster"></div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa totam rem quo error quod ad ab
-                        neque beatae! Harum enim ab illo vitae exercitationem. Beatae, adipisci. Rerum beatae nostrum,
-                        ducimus sapiente natus et possimus suscipit deleniti minima voluptatibus. Sit laudantium fugit
-                        sunt dolores nisi incidunt explicabo tempore expedita enim quibusdam.</p>
+                    <h4 class="title">Watch the Honest Trailer!</h4>
+                        <div id="movie-poster">
+                            <!--Movie poster that can be clicked on-->
+                        </div>
+
                 </div>
             </div>
 
