@@ -20,13 +20,15 @@ function renderButtons() {
     if (storedMovies !== null) {
         movieSearch = storedMovies;
     }
-    for (var i = 0; i < storedMovies.length; i++) {
+    for (var i = 0; i < movieSearch.length; i++) {
         var a = $("<button>");
         a.addClass("movie");
         a.attr("data-movieName", storedMovies[i]);
         a.text(storedMovies[i]);
         $("#prev-search").append(a);
     }
+
+    displayMovieInfo();
 
 };
 
@@ -41,6 +43,12 @@ renderButtons();
 
 function displayMovieInfo(movie) {
 
+    var movie = $(this).attr("data-movieName");
+    if (movie === undefined){
+        movie = movieSearch[movieSearch.length-1];
+    }
+  
+  
     console.log(movie);
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
@@ -78,9 +86,14 @@ function displayMovieInfo(movie) {
 
 };
 
+<<<<<<< HEAD
 function hello(){
     //take user to honest trailer target=_blank
 }
+=======
+//this will make it so that the last item on the list will populate when you refresh the page
+displayMovieInfo();
+>>>>>>> 620fee247efb791d7d447e3a93a59f03cfe592cd
 
 
 
