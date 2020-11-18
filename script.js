@@ -4,6 +4,7 @@ var movieSearch = [];
 
 $("#search-but").on("click", function (event) {
     event.preventDefault();
+    getVideo();
     var movSearch = $("#movie-input").val().trim();
     movieSearch.push(movSearch);
     localStorage.setItem("movieSearch", JSON.stringify(movieSearch));
@@ -92,9 +93,25 @@ function displayMovieInfo() {
     });
 
 };
+function getVideo() {
 
+    var movieInput = $("#movie-input").val()
+    $.ajax({
+      method: 'GET',
+      url: 'https://www.googleapis.com/youtube/v3/search',
+      data: {
+        key: 'AIzaSyAJ8GS9Q26oP02V831UEDAu8uaXvHsWIes',
+        q: movieInput +' Honest Trailer',
+        part: 'snippet',
+        maxResults: 1,
+        type: 'video',
+      }}).then(function (response) {
+        console.log(response);
+        console.log(response.items[0].id.videoId)
+        var videoId = response.items[0].id.videoId
+        var youtubeBase = "https://www.youtube.com/watch?v="
+        $("#honest-trailer-button").attr("href", youtubeBase + videoId)
+        
+      })};
 
-
-
-
-$(document).on("click", ".movie", displayMovieInfo);
+      $('#prev-search').on("click", ".movie", displayMovieInfo);

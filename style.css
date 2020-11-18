@@ -8,6 +8,8 @@ body {
     background-color: hsla(162, 83%, 40%, 0.925);
     height: 100vh;
   }
+
+  
   ul {
       list-style: disc    !important;
       /* Bulma has their own override for bullets and the only info we found said to use the important tag */
