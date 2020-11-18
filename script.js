@@ -19,14 +19,15 @@ function renderButtons() {
     if (storedMovies !== null) {
         movieSearch = storedMovies;
     }
-    for (var i = 0; i < storedMovies.length; i++) {
+    for (var i = 0; i < movieSearch.length; i++) {
         var a = $("<button>");
         a.addClass("movie");
         a.attr("data-movieName", storedMovies[i]);
         a.text(storedMovies[i]);
         $("#prev-search").append(a);
-    }
 
+    }
+    displayMovieInfo();
 };
 
 renderButtons();
@@ -41,6 +42,13 @@ renderButtons();
 function displayMovieInfo() {
 
     var movie = $(this).attr("data-movieName");
+
+    if (movie === undefined) {
+        movie = movieSearch[movieSearch.length - 1];
+    }
+
+
+
     console.log(movie);
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
@@ -61,11 +69,12 @@ function displayMovieInfo() {
         var released = $("<div>");
         released.text(response.Released);
         mainDiv.append(released);
+        
         var plot = $("<div>");
         plot.text(response.Plot);
         mainDiv.append(plot);
 
-        
+
         $("#movie-info").append(mainDiv);
 
         var movPost = $("<img>");
