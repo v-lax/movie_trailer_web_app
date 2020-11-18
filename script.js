@@ -78,6 +78,7 @@ function displayMovieInfo(movie) {
 
         var movPost = $("<img>");
         movPost.attr("src", response.Poster);
+        movPost.attr("id", "movieClick")
         $("#movie-poster").append(movPost);
 
 
@@ -85,10 +86,15 @@ function displayMovieInfo(movie) {
 
 };
 
+function hello(){
+    //take user to honest trailer target=_blank
+}
 //this will make it so that the last item on the list will populate when you refresh the page
 displayMovieInfo();
 
 
+
+$(document).on("click", "#movieClick", hello);
 
 
 $(document).on("click", ".movie", displayMovieInfo);
