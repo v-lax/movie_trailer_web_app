@@ -85,30 +85,18 @@ function displayMovieInfo() {
     });
 
 };
+function getVideo() {
 
-<<<<<<< HEAD
-renderButtons();
-
-
-function generatePosterHref(){
-var apiKey = AIzaSyAJ8GS9Q26oP02V831UEDAu8uaXvHsWIes
-
-
-
-
-
-
-
-
-
-
-
-
-}
-=======
-
-
-
-
-$(document).on("click", ".movie", displayMovieInfo);
->>>>>>> d28ccc37c2658a1cf8e330e799982d664e59d19b
+    var movieInput = $("#movie-input").val()
+    $.ajax({
+      method: 'GET',
+      url: 'https://www.googleapis.com/youtube/v3/search',
+      data: {
+        key: 'AIzaSyAJ8GS9Q26oP02V831UEDAu8uaXvHsWIes',
+        q: movieInput +' Honest Trailer',
+        part: 'snippet',
+        maxResults: 1,
+        type: 'video',
+      }}).then(function (response) {
+        console.log(response);
+      })};
