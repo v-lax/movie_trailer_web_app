@@ -70,6 +70,7 @@ function displayMovieInfo(movie) {
 
         var movPost = $("<img>");
         movPost.attr("src", response.Poster);
+        movPost.attr("id", "movieClick")
         $("#movie-poster").append(movPost);
 
 
@@ -77,8 +78,13 @@ function displayMovieInfo(movie) {
 
 };
 
+function hello(){
+    //take user to honest trailer target=_blank
+}
 
 
+
+$(document).on("click", "#movieClick", hello);
 
 
 $(document).on("click", ".movie", displayMovieInfo);
