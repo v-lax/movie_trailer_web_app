@@ -36,9 +36,6 @@ function renderButtons() {
 renderButtons();
 
 
-
-
-
 // Movie api
 
 
@@ -59,20 +56,13 @@ function displayMovieInfo(movie) {
         $("#movie-info").empty();
         $("#movie-poster").empty();
 
-        var mainDiv = $("<div>");
-        var rating = $("<div>");
-        rating.text(response.Rated);
-        mainDiv.append(rating);
-        var released = $("<div>");
-        released.text(response.Released);
-        mainDiv.append(released);
-        
-        var plot = $("<div>");
-        plot.text(response.Plot);
-        mainDiv.append(plot);
+        $("#movie-rating").text(("Rated: " + response.Rated));
 
 
-        $("#movie-info").append(mainDiv);
+        $("#release-date").text(("Released: " + response.Released));
+        $("#movie-genre").text(("Genre: " + response.Genre));
+        $("#movie-plot").text((response.Plot));
+
 
         var movPost = $("<img>");
         movPost.attr("src", response.Poster);
@@ -113,3 +103,30 @@ function getVideo(movieInput) {
 
 
       
+        
+
+////////////////////////Image of actors API//////////////////////////
+
+console.log(response.items[0].id.videoId)
+var videoId = response.items[0].id.videoId
+var youtubeBase = "https://www.youtube.com/watch?v="
+$("#honest-trailer-button").attr("href", youtubeBase + videoId)
+
+$('#prev-search').on("click", ".movie", displayMovieInfo);
+
+function displayActors(actornames) {
+    console.log(actornames)
+    for (let i = 0; i < actornames.length; i++) {
+        var actorName = actornames[i]
+        console.log(actorName)
+        $.ajax({
+            url: `https://www.googleapis.com/customsearch/v1?key=AIzaSyBMXuLospju_w3vYX_hODdqxcz3u_5x3j8&q=${actorName}&num=3&cx=0998025c5f77bfde1&searchTerm=image&alt=json`,
+            method: "GET"
+        }).then(function (response) {
+            var actorImage = $("<img>")
+            actorImage.attr("src", response.items[0].pagemap.imageobject[0].url)
+            $("#actors").append(actorImage)
+        })
+    }
+
+}
