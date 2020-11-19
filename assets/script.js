@@ -120,7 +120,12 @@ function getVideo(movieInput) {
       }
       
       )};
-
+$('#clear-but').on("click", function(){
+  localStorage.clear();
+  $("#prev-search").empty();
+  movieSearch=[];
+   
+})
 
 
 $('#prev-search').on("click", ".movie", function(){
