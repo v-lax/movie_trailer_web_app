@@ -95,6 +95,11 @@ function getVideo(movieInput) {
     $.ajax({
       method: 'GET',
       url: 'https://www.googleapis.com/youtube/v3/search',
+      statusCode:{
+          403:function(){
+              $("#trailer-button").text("Sorry we've hit our limit!")
+          }
+      },
       data: {
         key: 'AIzaSyCjerp3IakGbMamBLXHAI_lfuATAEnvVI8',
         q: movieInput +' Honest Trailer',
@@ -107,7 +112,9 @@ function getVideo(movieInput) {
         var youtubeBase = "https://www.youtube.com/watch?v=";
         $("#honest-trailer-button").attr("href", youtubeBase + videoId);
         
-      })};
+      }
+      
+      )};
 
 
 
