@@ -143,12 +143,19 @@ function displayActors(actornames) {
             method: "GET",
             statusCode:{
                 429:function(){
+                    $("h5").remove()
+
                     var span = $('<span>')
-                    span.addClass('icon is-large mt-5 has-text-white mr-2 ml-2')
+                    span.addClass('icon is-large mt-1 has-text-white mr-2 ml-2')
                     var icon = $('<i>')
                     icon.addClass('far fa-smile-wink fa-2x fa-pulse')
                     span.append(icon)
                     $('#actors').append(span)
+
+                    var errorMsg = $("<h5>")
+                    errorMsg.addClass('has-text-white mt-3')
+                    errorMsg.text("GOOGLE API has run out of requests, so here are some spining faces instead")
+                    $("#general-info").append(errorMsg)
                 }
             }
             
