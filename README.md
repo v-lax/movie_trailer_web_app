@@ -35,4 +35,4 @@ Zoreah | @Zoreah
 
 
 
-![Image of site]()
+![Image of site](https://github.com/v-lax/movie_trailer_web_app/blob/main/assets/deployed.png?raw=true)
