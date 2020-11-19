@@ -4,34 +4,39 @@ var movieSearch = [];
 
 $("#search-but").on("click", function (event) {
     event.preventDefault();
-    
     var movSearch = $("#movie-input").val().trim();
-    movieSearch.push(movSearch);
-    localStorage.setItem("movieSearch", JSON.stringify(movieSearch));
-    $("#movie-input").val("");
-    renderButtons();
-    getVideo(movieSearch)
+    console.log(typeof movSearch)
+    if((movSearch!=='') && (movieSearch.indexOf(movSearch)===-1)){
+        movieSearch.push(movSearch);
+        localStorage.setItem("movieSearch", JSON.stringify(movieSearch));
+        $("#movie-input").val("");
+        renderButtons();
+        getVideo(movieSearch)
+    } 
 });
 
 
 function renderButtons() {
     $("#prev-search").empty();
     var storedMovies = JSON.parse(localStorage.getItem("movieSearch"));
-
+    
     if (storedMovies !== null) {
         movieSearch = storedMovies;
     }
-
+    
     for (var i = 0; i < movieSearch.length; i++) {
         var a = $("<button>");
         a.addClass("movie");
         a.attr("data-movieName", storedMovies[i]);
         a.text(storedMovies[i]);
         $("#prev-search").append(a);
-
+        
     }
     console.log(movieSearch)
     displayMovieInfo(movieSearch[movieSearch.length-1]);
+    if(!movieSearch.length) {
+        return;
+    };
     getVideo(movieSearch[movieSearch.length-1])
 };
 
