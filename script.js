@@ -89,7 +89,9 @@ function getVideo(movieInput) {
         var youtubeBase = "https://www.youtube.com/watch?v=";
         $("#honest-trailer-button").attr("href", youtubeBase + videoId);
         
-      })};
+      }
+      
+      )};
 
 
 
