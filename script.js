@@ -149,6 +149,11 @@ function displayActors(actornames) {
             console.log(response)
             var actorFigure = $('<figure>')
             var actorImage = $("<img>")
+            if(response.items[0].pagemap.imageobject[0].url===undefined){
+                actorImage.attr('src','https://bulma.io/images/placeholders/128x128.png')
+            }else{
+                actorImage.attr("src", response.items[0].pagemap.imageobject[0].url)
+            }
             actorImage.attr("src", response.items[0].pagemap.imageobject[0].url)
             actorImage.addClass('is-rounded')
             actorFigure.append(actorImage)
