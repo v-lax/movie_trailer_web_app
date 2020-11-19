@@ -5,9 +5,16 @@
 }
 
 body {
-    
-    background-color: rgba(54, 53, 53, 0.753);
-    height: 100vh;
 
-    
+    background-color: rgba(54, 53, 53, 0.753); 
+    min-height: 100vh;
 }
+  
+  ul {
+      list-style: disc    !important;
+      /* Bulma has their own override for bullets and the only info we found said to use the important tag */
+  }
+
+  #actors{
+      display: flex;
+  }
