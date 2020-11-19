@@ -95,6 +95,11 @@ function getVideo(movieInput) {
     $.ajax({
       method: 'GET',
       url: 'https://www.googleapis.com/youtube/v3/search',
+      statusCode:{
+          403:function(){
+              $("#trailer-button").text("Sorry we've hit our limit!")
+          }
+      },
       data: {
         key: 'AIzaSyCjerp3IakGbMamBLXHAI_lfuATAEnvVI8',
         q: movieInput +' Honest Trailer',
@@ -107,7 +112,9 @@ function getVideo(movieInput) {
         var youtubeBase = "https://www.youtube.com/watch?v=";
         $("#honest-trailer-button").attr("href", youtubeBase + videoId);
         
-      })};
+      }
+      
+      )};
 
 
 
@@ -136,12 +143,19 @@ function displayActors(actornames) {
             method: "GET",
             statusCode:{
                 429:function(){
+                    $("h5").remove()
+
                     var span = $('<span>')
-                    span.addClass('icon is-large mt-5 has-text-white mr-2 ml-2')
+                    span.addClass('icon is-large mt-1 has-text-white mr-2 ml-2')
                     var icon = $('<i>')
                     icon.addClass('far fa-smile-wink fa-2x fa-pulse')
                     span.append(icon)
                     $('#actors').append(span)
+
+                    var errorMsg = $("<h5>")
+                    errorMsg.addClass('has-text-white mt-3')
+                    errorMsg.text("GOOGLE API has run out of requests, so here are some spining faces instead")
+                    $("#general-info").append(errorMsg)
                 }
             }
             
