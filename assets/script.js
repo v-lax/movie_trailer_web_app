@@ -7,7 +7,6 @@ $("#search-but").on("click", function (event) {
     $('#warning').hide()
     // $("#clear-but").on("click");
     var movSearch = $("#movie-input").val().trim();
-    console.log(typeof movSearch)
     if ((movSearch !== '') && (movieSearch.indexOf(movSearch) === -1)) {
         movieSearch.push(movSearch);
         localStorage.setItem("movieSearch", JSON.stringify(movieSearch));
@@ -34,7 +33,6 @@ function renderButtons() {
         $("#prev-search").append(a);
 
     }
-    console.log(movieSearch)
     displayMovieInfo(movieSearch[movieSearch.length - 1]);
     if (!movieSearch.length) {
         return;
@@ -115,7 +113,6 @@ function getVideo(movieInput) {
             type: 'video',
         }
     }).then(function (response) {
-        console.log(response)
         var videoId = response.items[0].id.videoId;
         var youtubeBase = "https://www.youtube.com/watch?v=";
         $("#honest-trailer-button").attr("href", youtubeBase + videoId);
@@ -179,15 +176,13 @@ function displayActors(actornames) {
             }
 
         }).then(function (response) {
-            console.log(response)
             var actorFigure = $('<figure>')
             var actorImage = $("<img>")
-            if (response.items[0].pagemap.imageobject[0].url === undefined) {
+            if (!response.items[0].pagemap.imageobject[0].url) {
                 actorImage.attr('src', 'https://bulma.io/images/placeholders/128x128.png')
             } else {
                 actorImage.attr("src", response.items[0].pagemap.imageobject[0].url)
             }
-            actorImage.attr("src", response.items[0].pagemap.imageobject[0].url)
             actorImage.addClass('is-rounded')
             actorFigure.append(actorImage)
             actorFigure.addClass('image is-128x128')
