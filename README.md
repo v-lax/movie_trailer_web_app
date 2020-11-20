@@ -16,6 +16,11 @@ David | @daviddugle
 Valli | @v-lax
 Zoreah | @Zoreah
 
+**Project Scope**
+
+[Scope](https://docs.google.com/document/d/1vzDmD-YPscDdNxjW1OXlDBpIfNwatyh4o6zN7IDQamo/edit)
+
+
 **Built With**
 
 *Bulma
@@ -29,7 +34,14 @@ Zoreah | @Zoreah
 *Google API
     *YouTube
     *Image
+
+**Presentation Link**
+
+[Presentation](https://docs.google.com/presentation/d/1TFptwcUX15Ph-H8CJ6G52tJX-JjtLLf0is9NmI81C3c/edit#slide=id.g29f43f0a72_0_24)
+
     
+
+
 **Deployed Site**
 [Deployed Site](https://v-lax.github.io/movie_trailer_web_app/index.html)
 
